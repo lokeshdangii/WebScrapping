@@ -1,0 +1,7 @@
+product_name => span --> class = "MuiTypography-root MuiTypography-body.small-regular css-1o60qtd"  
+
+INR_price => span --> class = "MuiTypography-root MuiTypography-body-m css-15d90lv"
+MRP_price => span --> class= "MuiTypography-root MuiTypography-body-m css-1v7c6e8"
+
+discount_percent => span --> class = "MuiTypography-root MuiTypography-body-m css-1yezi7s"
+
