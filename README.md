@@ -1,2 +1,2 @@
-# SQLAlchemy
-This repository contains my learnings of SQLAlchemy
+# Scrapping
+This repository contains my learnings of Scrapping
