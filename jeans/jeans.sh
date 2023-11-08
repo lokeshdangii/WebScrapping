@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for ((i = 730; i <= 730; i++))
+for ((i = 1; i <= 730; i++))
 do
   url="https://api.tatadigital.com/api/v1/search/composite?limit=21&q=jeans&scope=Fashion&sort=relevance&currentPage=$i"
 
@@ -22,5 +22,5 @@ do
                    -H 'sec-fetch-mode: cors' \
                    -H 'sec-fetch-site: same-site' \
                    -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36' \
-                   --compressed $url | jq '.results.products'  >> response.txt)
+                   --compressed $url | jq '.results.products'  >> jeans_curl.txt)
 done
