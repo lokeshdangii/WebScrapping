@@ -1,40 +1,55 @@
 import subprocess
 
 # # path for the bash file
-bash_script_path = '/home/lokesh/Desktop/Decode/WebScrapping/tshirt.sh'  
-# running the bash file
-subprocess.run(['bash', bash_script_path])
+# bash_script_path = '/home/lokesh/Desktop/Decode/WebScrapping/tshirt.sh'  
+# # running the bash file
+# subprocess.run(['bash', bash_script_path])
 
-# retving the  name and price form the file 
-with open('curl.txt', 'r') as file:
+# Initialize variables to store data
+brand_name = ""
+name = ""
+mrp_inr = ""
+price_inr = ""
+discount_percent = ""
+url = ""
+image_url = ""
 
-    price_data = []
-    name_data = []
+# Open the file and retrieve data
+with open('tshirt_curl.txt', 'r') as file:
+    product_data = []
 
     for line in file:
-
+        if "brandName" in line:
+            brand_name = line.strip()[14:-2]
         if "name" in line:
-            name_data.append(line.strip())
+            name = line.strip()[9:-2]
+        if "mrpINR" in line:
+            mrp_inr = line.strip()[10:-1]
         if "priceINR" in line:
-            price_data.append(line.strip())
-             
+            price_inr = line.strip()[12:-1]
+        if "discountPercent" in line:
+            discount_percent = line.strip()[19:-1]
+        if "url" in line:
+            # Extract the URL correctly
+            url = line.strip()[8:-2]
+        if "image" in line:
+            # Extract the image URL correctly 
+            image_url = line.strip()[10:-2]
 
-# writting the name and price to the file
-with open('data.txt', 'w') as data_file:
-    for name, price in zip(name_data, price_data):
-        data_file.write(name  +'\n' + price )
+            
 
+        if brand_name and name and mrp_inr and price_inr and discount_percent and url and image_url:
+            product_info = f"{brand_name},{name},{mrp_inr},{price_inr},{discount_percent},{url},{image_url}"
+            product_data.append(product_info)
+            brand_name = ""
+            name = ""
+            mrp_inr = ""
+            price_inr = ""
+            discount_percent = ""
+            url = ""
+            image_url = ""
 
-
-# 
-    # MRP_price = []
-    # discount_percent = []
-    # brand_data = []
-
-
-# if "brandName" in line:
-        #     brand_data.append(line.strip())
-        # if "mrpINR" in line:
-        #     MRP_price.append(line.strip())
-        # if "discountPercent" in line:
-        #     discount_percent.append(line.strip())
+# Writing the product data to the file
+with open('tshirt_data.csv', 'w') as data_file:
+    for product_info in product_data:
+        data_file.write(product_info + '\n')
