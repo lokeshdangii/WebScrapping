@@ -22,5 +22,5 @@ do
                    -H 'sec-fetch-mode: cors' \
                    -H 'sec-fetch-site: same-site' \
                    -H 'user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36' \
-                   --compressed $url | jq '.results.products'  >> response.txt)
+                   --compressed $url | jq '.results.products'  >> tshirt_curl.txt)
 done
