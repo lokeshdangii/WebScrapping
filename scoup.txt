@@ -5,3 +5,4 @@ MRP_price => span --> class= "MuiTypography-root MuiTypography-body-m css-1v7c6e
 
 discount_percent => span --> class = "MuiTypography-root MuiTypography-body-m css-1yezi7s"
 
+for file_name in ["tshirt_data.txt", "jackets_data.txt", "jeans_data.txt"]:
